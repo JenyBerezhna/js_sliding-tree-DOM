@@ -7,6 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  tree.querySelectorAll('li').forEach((li) => {
+    if (!li.querySelector('span')) {
+      const span = document.createElement('span');
+
+      span.textContent = li.firstChild.nodeValue.trim();
+      li.firstChild.replaceWith(span);
+    }
+  });
+
   tree.addEventListener('click', (eventy) => {
     const header = eventy.target.closest('span');
 
